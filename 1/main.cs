@@ -96,9 +96,9 @@ function InputManager::Init_controls(%this)
 	shipcontrols.bindCmd(keyboard, "a", "Car1.turnleft();", "Car1.stopturn();");
 	shipcontrols.bindCmd(keyboard, "d", "Car1.turnright();", "Car1.stopturn();");
 	shipcontrols.bindCmd(keyboard, "w", "Car1.accelerate();", "Car1.stopthrust();");
-	shipcontrols.bindCmd(keyboard, "j", "Car2.turnleft();", "Car2.stopturn();");
-	shipcontrols.bindCmd(keyboard, "l", "Car2.turnright();", "Car2.stopturn();");
-	shipcontrols.bindCmd(keyboard, "i", "Car2.accelerate();", "Car2.stopthrust();");
+	shipcontrols.bindCmd(keyboard, "Left", "Car2.turnleft();", "Car2.stopturn();");
+	shipcontrols.bindCmd(keyboard, "Right", "Car2.turnright();", "Car2.stopturn();");
+	shipcontrols.bindCmd(keyboard, "Up", "Car2.accelerate();", "Car2.stopthrust();");
 
 	//Push our ActionMap on top of the stack
 	shipcontrols.push();
