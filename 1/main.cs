@@ -20,12 +20,71 @@ function GameToy::reset(%this)
 	%position="0 0";
 	%this.buildBackground(%position,%size);
 	%this.buildRoad("1 0",62 SPC 70);
-	%this.setCar1("-9 -32",4 SPC 4);
-	%this.setCar2("-9 -27",4 SPC 4);
+	%this.setCar1("-9 -32",3 SPC 3);
+	%this.setCar2("-9 -27",3 SPC 3);
+	%this.buildBomb("0 0");	
+	%this.buildBomb("15 0");
+	%this.buildBomb("29 0");	
+	%this.buildBomb("15 30");
+	%this.buildFuel("15 26");	
+	%this.buildBarriers();
 	
 	
 
 }
+
+function GameToy::buildBarriers(%this){
+	%this.buildBarrel("0 -36");
+	%this.buildBarrel("5 -36");
+	%this.buildBarrel("10 -36");
+	%this.buildBarrel("15 -36");
+	%this.buildBarrel("20 -36");
+	%this.buildBarrel("25 -34");
+	%this.buildBarrel("30 -30");
+	%this.buildBarrel("32 -25");
+	%this.buildBarrel("33.5 -19");
+	%this.buildBarrel("33.5 -13");
+	%this.buildBarrel("33.5 -7");
+	%this.buildBarrel("33.5 -1");
+	%this.buildBarrel("33.5 5");
+	%this.buildBarrel("33.5 11");
+	%this.buildBarrel("33.5 17");
+	%this.buildBarrel("33.5 23");
+	%this.buildBarrel("32 29");
+	%this.buildBarrel("29 33");
+	%this.buildBarrel("25 35");
+	%this.buildBarrel("20 35");
+	%this.buildBarrel("15 35");
+	%this.buildBarrel("10 35");
+	%this.buildBarrel("5 35");
+	%this.buildBarrel("0 35");
+	%this.buildBarrel("-5 35");
+	%this.buildBarrel("-10 36");
+	%this.buildBarrel("-15 36");
+	%this.buildBarrel("-20 35.5");
+	%this.buildBarrel("-25 33");
+	%this.buildBarrel("-29 29");
+	%this.buildBarrel("-31 23");
+	%this.buildBarrel("-31.5 17");
+	%this.buildBarrel("-31.5 12");
+	%this.buildBarrel("-31.5 7");
+	%this.buildBarrel("-31.5 2");
+	%this.buildBarrel("-31.5 -3");
+	%this.buildBarrel("-31.5 -8");
+	%this.buildBarrel("-31.5 -13");
+	%this.buildBarrel("-31.5 -18");
+	%this.buildBarrel("-31.5 -23");
+	%this.buildBarrel("-31.5 -28");
+	%this.buildBarrel("-31.5 -33");
+	%this.buildBarrel("-5 -36");
+	%this.buildBarrel("-10 -36");
+	%this.buildBarrel("-15 -36");
+	%this.buildBarrel("-20 -36");
+	%this.buildBarrel("-25 -36");
+	%this.buildBarrel("-30 -36");
+	
+}
+
 
 function GameToy::buildBackground(%this,%position,%size)
 {
@@ -53,6 +112,59 @@ function GameToy::buildRoad(%this,%position,%size)
 	
 	
 }
+function GameToy::buildBomb(%this,%position)
+{	
+	%size=3 SPC 3;
+	%sprite = new Sprite();
+	%sprite.Position=%position;
+	%sprite.Size=%size;
+	%sprite.Image="GameToy:bomb";
+	%sprite.setBodyType("static");
+	%sprite.setSceneLayer=29;
+	%sprite.SceneGroup=20;
+	%sprite.createPolygonBoxCollisionShape();
+	SandboxScene.add(%sprite);
+
+   
+	
+	
+}
+
+function GameToy::buildFuel(%this,%position)
+{	
+	%size=3 SPC 3;
+	%sprite = new Sprite();
+	%sprite.Position=%position;
+	%sprite.Size=%size;
+	%sprite.Image="GameToy:fuel";
+	%sprite.setBodyType("static");
+	%sprite.setSceneLayer=29;
+	%sprite.SceneGroup=15;
+	%sprite.createPolygonBoxCollisionShape();
+	SandboxScene.add(%sprite);
+
+   
+	
+	
+}
+
+function GameToy::buildBarrel(%this,%position)
+{	
+	%size=3 SPC 3;
+	%sprite = new Sprite();
+	%sprite.Position=%position;
+	%sprite.Size=%size;
+	%sprite.Image="GameToy:barrier";
+	%sprite.setBodyType("static");
+	%sprite.setSceneLayer=29;
+	%sprite.SceneGroup=25;
+	%sprite.createPolygonBoxCollisionShape();
+	SandboxScene.add(%sprite);
+
+   
+	
+	
+}
 
 function GameToy::setCar1(%this,%position,%size)
 {
@@ -65,6 +177,7 @@ function GameToy::setCar1(%this,%position,%size)
 	%sprite.createPolygonBoxCollisionShape();
 	%sprite.setFixedAngle(true);
 	%sprite.isThrusting = false;
+	%sprite.setCollisionCallback( true );
 	SandboxScene.add(%sprite);
 	
 	
@@ -80,6 +193,7 @@ function GameToy::setCar2(%this,%position,%size)
 	%sprite.createPolygonBoxCollisionShape();
 	%sprite.setFixedAngle(true);
 	%sprite.isThrusting = false;
+	%sprite.setCollisionCallback( true );
 	SandboxScene.add(%sprite);
 	
 	
@@ -266,6 +380,91 @@ function Car2::stopthrust(%this)
 	//we set isThrusting to false to indicate that we are no longer thrusting.
 	//Next time we hit 'w', our accelerate function will use a bigger acceleration boost to get us going faster!
 	%this.isThrusting = false;
+}
+
+function Car1::onCollision(%this, %sceneobject, %collisiondetails)
+{
+    //If we have collided with an object belonging to Scenegroup 20,
+    //execute the code between the { ... }
+    //If we collide with something else, do nothing
+  if(%sceneobject.getSceneGroup() == 20)
+  {
+    // ParticlePlayer is also derived from SceneObject, we add it just like we've added all the other
+    //objects so far
+    %explosion = new ParticlePlayer();
+
+    //We load the particle asset from our ToyAssets module
+    %explosion.Particle = "ToyAssets:impactExplosion";
+
+    //We set the Particle Player's position to %Sceneobject's position
+    %explosion.setPosition(%sceneobject.getPosition());
+
+    //This Scales the particles to twice their original size
+    %explosion.setSizeScale(2);
+
+    //When we add a Particle Effect to the Scene, it automatically plays
+    SandboxScene.add(%explosion);
+
+    //We delete the asteroid
+    %sceneobject.safedelete();
+	%this.safedelete();
+	//GameToy.reset();
+    
+   
+     
+  }
+   if(%sceneobject.getSceneGroup() == 15)
+  {
+    
+    %sceneobject.safedelete();
+	
+    
+    
+     
+  }
+}
+
+function Car2::onCollision(%this, %sceneobject, %collisiondetails)
+{
+    //If we have collided with an object belonging to Scenegroup 20,
+    //execute the code between the { ... }
+    //If we collide with something else, do nothing
+  if(%sceneobject.getSceneGroup() == 20)
+  {
+    // ParticlePlayer is also derived from SceneObject, we add it just like we've added all the other
+    //objects so far
+    %explosion = new ParticlePlayer();
+
+    //We load the particle asset from our ToyAssets module
+    %explosion.Particle = "ToyAssets:impactExplosion";
+
+    //We set the Particle Player's position to %Sceneobject's position
+    %explosion.setPosition(%sceneobject.getPosition());
+
+    //This Scales the particles to twice their original size
+    %explosion.setSizeScale(2);
+
+    //When we add a Particle Effect to the Scene, it automatically plays
+    SandboxScene.add(%explosion);
+
+    //We delete the asteroid
+    %sceneobject.safedelete();
+	%this.safedelete();
+	
+    
+  
+     
+  }
+  if(%sceneobject.getSceneGroup() == 15)
+  {
+    
+    %sceneobject.safedelete();
+	
+    
+    
+     
+  }
+  
 }
 
 
