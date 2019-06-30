@@ -19,7 +19,7 @@ function GameToy::reset(%this)
 	%size=GameToy.mySpriteSize SPC GameToy.mySpriteSize;
 	%position="0 0";
 	%this.buildBackground(%position,%size);
-	%this.buildRoad("1 0",62 SPC 70);
+	%this.buildRoad(%position,%size);
 	%this.setCar1("-9 -32",4 SPC 4);
 	%this.setCar2("-9 -27",4 SPC 4);
 	
