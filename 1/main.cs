@@ -363,7 +363,7 @@ function InputManager::Init_controls(%this)
 
 function Car1::accelerate(%this)  
 {  
-	alxPlay("GameToy:carSpeedMusic");
+	//alxPlay("GameToy:carSpeedMusic");
 	echo("@@@shaveen pressed W");
     //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
     %adjustedAngle = -(%this.Angle-90) ;  
