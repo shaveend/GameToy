@@ -1,4 +1,3 @@
-
 function GameToy::create(%this)
 {
 	GameToy.mySpriteSize=75;
@@ -19,6 +18,8 @@ function GameToy::reset(%this)
 	SandboxScene.setGravity(0,0);
 	%size=GameToy.mySpriteSize SPC GameToy.mySpriteSize;
 	%position="0 0";
+	%car1music= 0;
+	%car2music= 0;
 	%this.buildBackground(%position,%size);
 	%this.buildRoad("1 0",62 SPC 70);
 	%this.setCar1("-9 -32",3 SPC 3);
@@ -361,9 +362,14 @@ function InputManager::Init_controls(%this)
 	shipcontrols.push();
 }
 
-function Car1::accelerate(%this)  
+function Car1::accelerate(%this,%car1music)  
 {  
-	//alxPlay("GameToy:carSpeedMusic");
+	%this.car1music=0;
+	if(%this.car1music==0){
+		//echo("not play");
+		alxPlay("GameToy:carSpeedMusic");
+		%this.car1music=1;
+	}
 	echo("@@@shaveen pressed W");
     //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
     %adjustedAngle = -(%this.Angle-90) ;  
@@ -403,10 +409,11 @@ function Car1::accelerate(%this)
     %this.isThrusting = true;  
      
     //We create a schedule to repeat this thrust every 100 milliseconds  
-    %this.thrustschedule = %this.schedule(100,accelerate);     
+    %this.thrustschedule = %this.schedule(100,accelerate);
 }
 function Car1::deaccelerate(%this)  
 {  
+
 	%this.setLinearDamping(1.5);
 	echo("@@@shaveen pressed S");
     //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
@@ -478,6 +485,7 @@ function Car1::stopturn(%this)
 function Car1::stopthrust(%this)
 { 
 	//We add Damping to the Linear Velocity, which slows down the ship when the key is released
+
 	%this.setLinearDamping(0.8);
 	//We set Angular Damping to 0 so that we can turn as fast as possible
 	%this.setAngularDamping(0.0);
@@ -491,6 +499,12 @@ function Car1::stopthrust(%this)
 
 function Car2::accelerate(%this)  
 {  
+	%this.car2music=0;
+	if(%this.car2music==0){
+		//echo("not play");
+		alxPlay("GameToy:carSpeedMusic");
+		%this.car2music=1;
+	}
 	echo("@@@shaveen pressed W");
     //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
     %adjustedAngle = -(%this.Angle-90) ;  
@@ -640,6 +654,10 @@ function Car1::onCollision(%this, %sceneobject, %collisiondetails)
     SandboxScene.add(%explosion);
 
     //We delete the asteroid
+	alxStopAll();
+	alxPlay("GameToy:bombMusic");
+	alxPlay("GameToy:afterWinning");
+	//alxPlay("GameToy:BackgroundMusic");
     %sceneobject.safedelete();
 	%this.safedelete();
 	//GameToy.reset();

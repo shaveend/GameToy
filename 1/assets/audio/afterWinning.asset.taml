@@ -1,5 +1,4 @@
 <AudioAsset
- AssetName="backgroundMusic"
- AudioFile="backgroundMusic.wav"
- Looping="true"
+ AssetName="afterWinning"
+ AudioFile="afterWinning.wav"
 />
