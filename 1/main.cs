@@ -11,6 +11,7 @@ function GameToy::destroy(%this)
 {
 	echo("@@@shaveen destroyed toy");
 	shipcontrols.pop();
+	alxStopAll();
 }
 function GameToy::reset(%this)
 {
@@ -29,7 +30,8 @@ function GameToy::reset(%this)
 	%this.buildFuel("15 26");	
 	%this.buildBarriers();
 	
-	
+	alxStopAll();
+	alxPlay("GameToy:BackgroundMusic");
 
 }
 
@@ -82,7 +84,150 @@ function GameToy::buildBarriers(%this){
 	%this.buildBarrel("-20 -36");
 	%this.buildBarrel("-25 -36");
 	%this.buildBarrel("-30 -36");
+
+	%this.buildBarrel("-18 -23");
+	%this.buildBarrel("-18 -22");
+	%this.buildBarrel("-18 -20");
+	%this.buildBarrel("-18 -18");
+	%this.buildBarrel("-18 -16");
+	%this.buildBarrel("-18 -14");
+	%this.buildBarrel("-18 -12");
+	%this.buildBarrel("-16 -11");
+	%this.buildBarrel("-13 -12");
+	%this.buildBarrel("-10 -13");
+	%this.buildBarrel("-7 -14");
+	%this.buildBarrel("-4 -15");
+	%this.buildBarrel("-1 -16");
+	%this.buildBarrel("2 -17");
+	%this.buildBarrel("4 -19");
+	%this.buildBarrel("6 -20");
+	%this.buildBarrel("8 -20");
+	%this.buildBarrel("10 -21");
+	%this.buildBarrel("12 -22");
+	%this.buildBarrel("15 -21");
+	%this.buildBarrel("19 -19");
+	%this.buildBarrel("18 -21");
+	%this.buildBarrel("21 -18");
 	
+
+	%this.buildBarrel("-15 -23");
+	%this.buildBarrel("-12 -23");
+	%this.buildBarrel("-9 -23");
+	%this.buildBarrel("-6 -23");
+	%this.buildBarrel("-3 -23");
+	%this.buildBarrel("0 -23");
+	%this.buildBarrel("3 -23");
+	%this.buildBarrel("6 -23");
+	%this.buildBarrel("9 -23");
+	%this.buildBarrel("12 -23");
+	%this.buildBarrel("15 -23");
+	%this.buildBarrel("18 -23");
+
+	%this.buildBarrel("21 -22");
+	%this.buildBarrel("22 -19");
+	%this.buildBarrel("22 -16");
+	%this.buildBarrel("22 -13");
+	%this.buildBarrel("22 -10");
+	%this.buildBarrel("22 -7");
+	%this.buildBarrel("22 -4");
+	%this.buildBarrel("22 -1");
+	%this.buildBarrel("22  2");
+	%this.buildBarrel("22  4");
+	%this.buildBarrel("22  6");
+	%this.buildBarrel("22  8");
+	%this.buildBarrel("22 -1");
+	%this.buildBarrel("22  2");
+	%this.buildBarrel("22  4");
+	%this.buildBarrel("22  6");
+	%this.buildBarrel("22  8");
+	%this.buildBarrel("22  10");
+	%this.buildBarrel("22  12");
+	%this.buildBarrel("22  14");
+	%this.buildBarrel("22  16");
+	%this.buildBarrel("22  18");
+
+	%this.buildBarrel("22  20");
+	%this.buildBarrel("22  22");
+
+	%this.buildBarrel("19  22");
+	%this.buildBarrel("16  22");
+	%this.buildBarrel("16  21");
+	%this.buildBarrel("19  20");
+	%this.buildBarrel("20  19");
+	
+	%this.buildBarrel("13  21");
+	%this.buildBarrel("10  21");
+	%this.buildBarrel("7  21");
+	%this.buildBarrel("4  20");
+	%this.buildBarrel("1  21");
+	%this.buildBarrel("-2  21");
+	%this.buildBarrel("-5  22");
+	%this.buildBarrel("-8  23");
+	%this.buildBarrel("-11  23");
+	%this.buildBarrel("-14  23");
+	%this.buildBarrel("-17  23");
+
+	%this.buildBarrel("-18  22");
+	%this.buildBarrel("-19  20");
+	%this.buildBarrel("-19  17");
+	%this.buildBarrel("-18  14");
+
+	%this.buildBarrel("-15  15");
+	%this.buildBarrel("-13  17");
+	%this.buildBarrel("-12  18");
+	%this.buildBarrel("-11  19");
+	%this.buildBarrel("-9  20");
+	%this.buildBarrel("-6  20");
+	%this.buildBarrel("-3  19");
+	%this.buildBarrel("-1  17");
+	%this.buildBarrel("0  15");
+	%this.buildBarrel("1  14");
+	%this.buildBarrel("2  13");
+	%this.buildBarrel("1  12");
+	%this.buildBarrel("2  11");
+	%this.buildBarrel("2  10");
+	%this.buildBarrel("2  9");
+	%this.buildBarrel("3  8");
+	%this.buildBarrel("3  9");
+	%this.buildBarrel("3  10");
+	%this.buildBarrel("4  11");
+	%this.buildBarrel("4  12");
+	%this.buildBarrel("5  14");
+	%this.buildBarrel("7  16");
+	%this.buildBarrel("8  18");
+	%this.buildBarrel("9  19");
+	%this.buildBarrel("10  20");
+
+	%this.buildBarrel("0  -4");
+	%this.buildBarrel("3  -5");
+	%this.buildBarrel("6  -6");
+	%this.buildBarrel("9  -7");
+	%this.buildBarrel("11  -8");
+	%this.buildBarrel("11  -6");
+	%this.buildBarrel("11  -4");
+	%this.buildBarrel("11  -2");
+	%this.buildBarrel("11  0");
+	%this.buildBarrel("9  -2");
+
+	%this.buildBarrel("-5  -2");
+	%this.buildBarrel("-8  0");
+	%this.buildBarrel("-11  1");
+	%this.buildBarrel("-8  4");
+	%this.buildBarrel("-7  1");
+	%this.buildBarrel("-11  2");
+	%this.buildBarrel("-14  2");
+	%this.buildBarrel("-17  2");
+	%this.buildBarrel("-20  2");		
+	%this.buildBarrel("-23  3");
+	%this.buildBarrel("-26  5");
+	%this.buildBarrel("-28  7");
+	%this.buildBarrel("-30  9");
+
+	%this.buildBarrel("-23  0");
+	%this.buildBarrel("-25  -1");
+	%this.buildBarrel("-27  -3");
+	%this.buildBarrel("-29  -5");
+
 }
 
 
@@ -123,11 +268,7 @@ function GameToy::buildBomb(%this,%position)
 	%sprite.setSceneLayer=29;
 	%sprite.SceneGroup=20;
 	%sprite.createPolygonBoxCollisionShape();
-	SandboxScene.add(%sprite);
-
-   
-	
-	
+	SandboxScene.add(%sprite);	
 }
 
 function GameToy::buildFuel(%this,%position)
@@ -210,9 +351,11 @@ function InputManager::Init_controls(%this)
 	shipcontrols.bindCmd(keyboard, "a", "Car1.turnleft();", "Car1.stopturn();");
 	shipcontrols.bindCmd(keyboard, "d", "Car1.turnright();", "Car1.stopturn();");
 	shipcontrols.bindCmd(keyboard, "w", "Car1.accelerate();", "Car1.stopthrust();");
-	shipcontrols.bindCmd(keyboard, "j", "Car2.turnleft();", "Car2.stopturn();");
-	shipcontrols.bindCmd(keyboard, "l", "Car2.turnright();", "Car2.stopturn();");
-	shipcontrols.bindCmd(keyboard, "i", "Car2.accelerate();", "Car2.stopthrust();");
+	shipcontrols.bindCmd(keyboard, "s", "Car1.deaccelerate();", "Car1.stopthrust();");
+	shipcontrols.bindCmd(keyboard, "Left", "Car2.turnleft();", "Car2.stopturn();");
+	shipcontrols.bindCmd(keyboard, "Right", "Car2.turnright();", "Car2.stopturn();");
+	shipcontrols.bindCmd(keyboard, "Up", "Car2.accelerate();", "Car2.stopthrust();");
+	shipcontrols.bindCmd(keyboard, "Down", "Car2.deaccelerate();", "Car2.stopthrust();");
 
 	//Push our ActionMap on top of the stack
 	shipcontrols.push();
@@ -220,6 +363,7 @@ function InputManager::Init_controls(%this)
 
 function Car1::accelerate(%this)  
 {  
+	alxPlay("GameToy:carSpeedMusic");
 	echo("@@@shaveen pressed W");
     //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
     %adjustedAngle = -(%this.Angle-90) ;  
@@ -260,6 +404,51 @@ function Car1::accelerate(%this)
      
     //We create a schedule to repeat this thrust every 100 milliseconds  
     %this.thrustschedule = %this.schedule(100,accelerate);     
+}
+function Car1::deaccelerate(%this)  
+{  
+	%this.setLinearDamping(1.5);
+	echo("@@@shaveen pressed S");
+    //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
+    %adjustedAngle = -(%this.Angle-90) ;  
+	echo (%adjustedAngle);
+	//echo (%this.Angle);
+  
+    //When used as a math operand, % refers to modulo (or modulus) operator  
+    //This function can be read as %adjusted angle = %adjustedAngle % 360;  
+    //%adjustedAngle %= 360;  
+  
+    //If we are thrusting, shorten our vector  
+    if(%this.isThrusting)  
+    {    
+        %this.setLinearDamping(0.8);
+		//Calculate a direction from an Angle and Magnitude  
+        %ThrustVector= Vector2Direction(%adjustedAngle,-10);  
+    }  
+    else  
+    {  
+        %ThrustVector = Vector2Direction(%adjustedAngle,-10);  
+  
+        //We temporarily remove the Damping of Linear Velocity to allow full power!  
+        %this.setLinearDamping(0.0);  
+  
+        //We temporarily increase the Damping of Angular velocity so that the ship turns slower when at full thrust  
+        %this.setAngularDamping(-2.0);  
+    }  
+  
+    //Adding our position to the ThrustVector determines the strength of our thrust  
+    %MywordX = %this.Position.x - %ThrustVector.x;  
+    %MywordY = %this.Position.y - %ThrustVector.y;    
+  
+    //applyLinearImpulse pushes on our spaceship, using %ThrustVector as the impulse vector.  
+    //The second parameter is the point in the ship's collision shape used to apply the thrust  
+    %this.applyLinearImpulse(%ThrustVector, "0 0");  
+  
+    //We are now thrusting, we will set this to false when we release the 'w' key  
+    %this.isThrusting = true;  
+     
+    //We create a schedule to repeat this thrust every 100 milliseconds  
+    %this.thrustschedule = %this.schedule(150,deaccelerate);     
 }
 function Car1::turnleft(%this)
 {
@@ -342,6 +531,51 @@ function Car2::accelerate(%this)
      
     //We create a schedule to repeat this thrust every 100 milliseconds  
     %this.thrustschedule = %this.schedule(100,accelerate);     
+}
+function Car2::deaccelerate(%this)  
+{  
+	%this.setLinearDamping(1.5);
+	echo("@@@shaveen pressed Down");
+    //Get the angle of our spaceship. When the ship is pointing upwards, its Angle is 90.  
+    %adjustedAngle = -(%this.Angle-90) ;  
+	echo (%adjustedAngle);
+	//echo (%this.Angle);
+  
+    //When used as a math operand, % refers to modulo (or modulus) operator  
+    //This function can be read as %adjusted angle = %adjustedAngle % 360;  
+    //%adjustedAngle %= 360;  
+  
+    //If we are thrusting, shorten our vector  
+    if(%this.isThrusting)  
+    {    
+		%this.setLinearDamping(0.8); 
+        //Calculate a direction from an Angle and Magnitude  
+        %ThrustVector= Vector2Direction(%adjustedAngle,-10);  
+    }  
+    else  
+    {  
+        %ThrustVector = Vector2Direction(%adjustedAngle,-10);  
+  
+        //We temporarily remove the Damping of Linear Velocity to allow full power!  
+        %this.setLinearDamping(0.0);  
+  
+        //We temporarily increase the Damping of Angular velocity so that the ship turns slower when at full thrust  
+        %this.setAngularDamping(2.0);  
+    }  
+  
+    //Adding our position to the ThrustVector determines the strength of our thrust  
+    %MywordX = %this.Position.x - %ThrustVector.x;  
+    %MywordY = %this.Position.y - %ThrustVector.y;    
+  
+    //applyLinearImpulse pushes on our spaceship, using %ThrustVector as the impulse vector.  
+    //The second parameter is the point in the ship's collision shape used to apply the thrust  
+    %this.applyLinearImpulse(%ThrustVector, "0 0");  
+  
+    //We are now thrusting, we will set this to false when we release the 'w' key  
+    %this.isThrusting = true;  
+     
+    //We create a schedule to repeat this thrust every 100 milliseconds  
+    %this.thrustschedule = %this.schedule(150,deaccelerate);     
 }
 function Car2::turnleft(%this)
 {

@@ -1,0 +1,5 @@
+<AudioAsset
+ AssetName="fuelCollectMusic"
+ AudioFile="fuelCollect.wav"
+ Looping="true"
+/>

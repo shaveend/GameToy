@@ -1,0 +1,5 @@
+<AudioAsset
+ AssetName="backgroundMusic"
+ AudioFile="backgroundMusic.wav"
+ Looping="true"
+/>
